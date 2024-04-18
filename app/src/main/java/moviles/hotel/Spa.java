@@ -82,4 +82,5 @@ public class Spa extends Fragment implements View.OnClickListener {
             Navigation.findNavController( view ).navigate( R.id.menu,bundle);
         }
     }
+
 }

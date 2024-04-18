@@ -33,6 +33,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.room:room-common:2.6.1")
     val nav_version = "2.5.3"
     // Java language implementation
     implementation("androidx.navigation:navigation-fragment:$nav_version")
