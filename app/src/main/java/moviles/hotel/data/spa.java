@@ -25,7 +25,6 @@ public class spa {
     public Spa (Cursor cursor){
         this.tipo_z = cursor.getString( cursor.getColumnIndex( spaContract.SpaEntry.table_name) );
         this.nombre = cursor.getString( cursor.getColumnIndex( spaContract.SpaEntry.col_nombre ) );
-
     }
 
     public String getTipo_z() {
