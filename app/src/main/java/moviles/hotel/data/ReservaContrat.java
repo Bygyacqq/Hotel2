@@ -7,12 +7,12 @@ public class ReservaContrat
     public static abstract class ReservaEntry implements BaseColumns
     {
         public static final String TABLE_NAME = "Reserva";
-        public static final String col_id_R = "Num Reserva";
+        public static final String col_id_R = "Reserva";
         public static final String col_id_U = "Usuario";
         public static final String col_fecha = "Fecha";
         public static final String col_Hora = "Hora";
         public static final String col_Servicio = "Tipo de Servicio";
-        public static final int col_Cantidad = 0;
+        public static final String col_Cantidad = "Cantidad de personas";
 
     }
 }

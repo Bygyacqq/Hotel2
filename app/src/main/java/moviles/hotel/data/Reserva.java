@@ -32,12 +32,12 @@ public class Reserva
         return values;
     }
     public Reserva(Cursor cursor){
-        this.id_Reserva = cursor.getInt(cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_id_R));
-        this.id_usuario = cursor.getInt(cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_id_U));
+        this.id_Reserva = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_id_R)));
+        this.id_usuario = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_id_U)));
         this.fecha_R = cursor.getString( cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_fecha));
-        this.hora_R = cursor.getString( cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_Hora ) );
-        this.servicio = cursor.getString( cursor.getColumnIndex( ReservaContrat.ReservaEntry.col_Servicio ) );
-        this.cantidad = cursor.getInt(cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_Cantidad));
+        this.hora_R = cursor.getString( cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_Hora ));
+        this.servicio = cursor.getString(cursor.getColumnIndex( ReservaContrat.ReservaEntry.col_Servicio ));
+        this.cantidad = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ReservaContrat.ReservaEntry.col_Cantidad)));
     }
     public int getId_Reserva() {
         return id_Reserva;
