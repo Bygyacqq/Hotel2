@@ -6,20 +6,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Build;
-
 import androidx.annotation.Nullable;
 
 import moviles.hotel.data.HuespedContract.HuespedEntry;
 import moviles.hotel.data.TelefonoContract.TelefonoEntry;
-
+import moviles.hotel.data.ReservaContrat.ReservaEntry;
 public class HotelDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "hotel";
     private static final int DATABASE_VERSION = 1;
-    public HotelDBHelper(@Nullable Context context){
+
+    public HotelDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE "+ HuespedEntry.TABLE_NAME + " (" +
@@ -36,6 +35,16 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY ("+HuespedEntry.col_usuario+","+TelefonoEntry.col_telefono+")," +
                 "UNIQUE("+TelefonoEntry.col_telefono+"),"+
                 "FOREIGN KEY ("+HuespedEntry.col_usuario+") REFERENCES "+ HuespedEntry.TABLE_NAME +"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE)");
+
+        sqLiteDatabase.execSQL(" CREATE TABLE "+ ReservaContrat.ReservaEntry.TABLE_NAME +"( " +
+                ReservaContrat.ReservaEntry._ID +"INTEGER, " +
+                ReservaContrat.ReservaEntry.col_id_R + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ReservaContrat.ReservaEntry.col_id_U + " INTEGER NOT NULL, " +
+                ReservaContrat.ReservaEntry.col_fecha + " TEXT NOT NULL, " +
+                ReservaContrat.ReservaEntry.col_Hora + " TEXT NOT NULL, " +
+                ReservaContrat.ReservaEntry.col_Servicio + " TEXT NOT NULL, " +
+                ReservaContrat.ReservaEntry.col_Cantidad + "INTEGER NOT NULL, " +
+                ")");
     }
 
     @Override
