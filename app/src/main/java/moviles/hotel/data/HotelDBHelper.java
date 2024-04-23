@@ -44,7 +44,7 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 ReservaContrat.ReservaEntry.col_Hora + " TEXT NOT NULL, " +
                 ReservaContrat.ReservaEntry.col_Servicio + " TEXT NOT NULL, " +
                 ReservaContrat.ReservaEntry.col_Cantidad + "INTEGER NOT NULL, " +
-                " FOREIGN KEY ("+HuespedEntry.col_usuario+") references"+ ReservaEntry.TABLE_NAME+"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE)");
+                " FOREIGN KEY ("+ReservaEntry.col_id_U+") references"+ HuespedEntry.TABLE_NAME+"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE)");
 
     }
 
