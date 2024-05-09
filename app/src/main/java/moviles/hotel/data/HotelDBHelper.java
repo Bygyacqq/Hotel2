@@ -39,35 +39,24 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 "UNIQUE("+TelefonoEntry.col_telefono+"),"+
                 "FOREIGN KEY ("+HuespedEntry.col_usuario+") REFERENCES "+ HuespedEntry.TABLE_NAME +"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE)");
 
-        String SQL_CREATE_SPA_TABLE = "CREATE TABLE " + spacontract.spaEntry.TABLE_NAME + " ("
 
-                + spacontract.spaEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+        sqLiteDatabase.execSQL("CREATE TABLE " + spaEntry.TABLE_NAME + " (" +
+                spaEntry._ID + " INTEGER PRIMARY KEY, " +
+                spaEntry.COLUMN_DATE + " DATE, " +
+                spaEntry.COLUMN_SPA_ZONE + " TEXT, " +
+                spaEntry.COLUMN_GUEST_ID + " INTEGER, " +
+                spaEntry.COLUMN_TIME + "TIME" +
+                "FOREIGN KEY (" + spaEntry.COLUMN_GUEST_ID + ") REFERENCES " + HuespedEntry.TABLE_NAME + "(" + spaEntry.COLUMN_GUEST_ID + ")" +
+                ")");
 
-                + spacontract.spaEntry.COLUMN_GUEST_ID + " INTEGER NOT NULL, "
-
-                + spacontract.spaEntry.COLUMN_SPA_ZONE + " TEXT NOT NULL, "
-
-                + spacontract.spaEntry.COLUMN_DATE + " TEXT NOT NULL, "
-
-                + spacontract.spaEntry.COLUMN_TIME + " TEXT NOT NULL, "
-
-                + "FOREIGN KEY (" + spacontract.spaEntry.COLUMN_GUEST_ID + ") REFERENCES "
-                + HuespedContract.HuespedEntry.TABLE_NAME + " (" + HuespedContract.HuespedEntry._ID + "));";
-        String SQL_CREATE_CUENTA_TABLE = "CREATE TABLE " + cuentacontract.cuentaEntry.TABLE_NAME + " ("
-
-                + cuentacontract.cuentaEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-
-                + cuentacontract.cuentaEntry.TABLE_NAME + " INTEGER NOT NULL, "
-
-                + cuentacontract.cuentaEntry.COLUMN_GUEST_ID + " TEXT NOT NULL, "
-
-                + cuentacontract.cuentaEntry.COLUMN_AMOUNT + " TEXT NOT NULL, "
-
-                + cuentacontract.cuentaEntry.COLUMN_DATE + " TEXT NOT NULL, ";
-
-
-        sqLiteDatabase.execSQL(SQL_CREATE_CUENTA_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_SPA_TABLE);
+        sqLiteDatabase.execSQL("CREATE TABLE " + cuentaEntry.TABLE_NAME + " (" +
+                cuentaEntry._ID + " INTEGER PRIMARY KEY, " +
+                cuentaEntry.COLUMN_DATE + " DATE, " +
+                cuentaEntry.COLUMN_AMOUNT + " REAL, " +
+                cuentaEntry.COLUMN_GUEST_ID + " INTEGER, " +
+                cuentaEntry.COLUMN_AMOUNT + "double" +
+                "FOREIGN KEY (" + cuentaEntry.COLUMN_GUEST_ID + ") REFERENCES " + HuespedEntry.TABLE_NAME + "(" + cuentaEntry.COLUMN_GUEST_ID + ")" +
+                ")");
 
 
     }
