@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 
 import moviles.hotel.data.HuespedContract.HuespedEntry;
 import moviles.hotel.data.TelefonoContract.TelefonoEntry;
+import moviles.hotel.data.spacontract.spaEntry;
+import moviles.hotel.data.cuentacontract.cuentaEntry;
 
 public class HotelDBHelper extends SQLiteOpenHelper {
 
@@ -36,6 +38,38 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY ("+HuespedEntry.col_usuario+","+TelefonoEntry.col_telefono+")," +
                 "UNIQUE("+TelefonoEntry.col_telefono+"),"+
                 "FOREIGN KEY ("+HuespedEntry.col_usuario+") REFERENCES "+ HuespedEntry.TABLE_NAME +"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE)");
+
+        String SQL_CREATE_SPA_TABLE = "CREATE TABLE " + spacontract.spaEntry.TABLE_NAME + " ("
+
+                + spacontract.spaEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+
+                + spacontract.spaEntry.COLUMN_GUEST_ID + " INTEGER NOT NULL, "
+
+                + spacontract.spaEntry.COLUMN_SPA_ZONE + " TEXT NOT NULL, "
+
+                + spacontract.spaEntry.COLUMN_DATE + " TEXT NOT NULL, "
+
+                + spacontract.spaEntry.COLUMN_TIME + " TEXT NOT NULL, "
+
+                + "FOREIGN KEY (" + spacontract.spaEntry.COLUMN_GUEST_ID + ") REFERENCES "
+                + HuespedContract.HuespedEntry.TABLE_NAME + " (" + HuespedContract.HuespedEntry._ID + "));";
+        String SQL_CREATE_CUENTA_TABLE = "CREATE TABLE " + cuentacontract.cuentaEntry.TABLE_NAME + " ("
+
+                + cuentacontract.cuentaEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+
+                + cuentacontract.cuentaEntry.TABLE_NAME + " INTEGER NOT NULL, "
+
+                + cuentacontract.cuentaEntry.COLUMN_GUEST_ID + " TEXT NOT NULL, "
+
+                + cuentacontract.cuentaEntry.COLUMN_AMOUNT + " TEXT NOT NULL, "
+
+                + cuentacontract.cuentaEntry.COLUMN_DATE + " TEXT NOT NULL, ";
+
+
+        sqLiteDatabase.execSQL(SQL_CREATE_CUENTA_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_SPA_TABLE);
+
+
     }
 
     @Override
