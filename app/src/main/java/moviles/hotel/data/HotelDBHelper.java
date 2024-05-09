@@ -1,5 +1,6 @@
 package moviles.hotel.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -45,7 +46,7 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 spaEntry.COLUMN_DATE + " DATE, " +
                 spaEntry.COLUMN_SPA_ZONE + " TEXT, " +
                 spaEntry.COLUMN_GUEST_ID + " INTEGER, " +
-                spaEntry.COLUMN_TIME + "TIME" +
+                spaEntry.COLUMN_TIME + "TIME," +
                 "FOREIGN KEY (" + spaEntry.COLUMN_GUEST_ID + ") REFERENCES " + HuespedEntry.TABLE_NAME + "(" + spaEntry.COLUMN_GUEST_ID + ")" +
                 ")");
 
@@ -54,7 +55,7 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 cuentaEntry.COLUMN_DATE + " DATE, " +
                 cuentaEntry.COLUMN_AMOUNT + " REAL, " +
                 cuentaEntry.COLUMN_GUEST_ID + " INTEGER, " +
-                cuentaEntry.COLUMN_AMOUNT + "double" +
+                cuentaEntry.COLUMN_AMOUNT + "double," +
                 "FOREIGN KEY (" + cuentaEntry.COLUMN_GUEST_ID + ") REFERENCES " + HuespedEntry.TABLE_NAME + "(" + cuentaEntry.COLUMN_GUEST_ID + ")" +
                 ")");
 
@@ -152,6 +153,8 @@ public class HotelDBHelper extends SQLiteOpenHelper {
                 new String[]{user}
         );
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
