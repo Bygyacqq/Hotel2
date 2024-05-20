@@ -59,7 +59,7 @@ public class Reserva
         return servicio;
     }
 
-    public String getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 }
