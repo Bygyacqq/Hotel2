@@ -31,7 +31,7 @@ public class Login extends Fragment implements View.OnClickListener {
     private Button btnLogin;
     private EditText usrText;
     private EditText passwordText;
-
+    private Button buttonRegister;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,6 +69,7 @@ public class Login extends Fragment implements View.OnClickListener {
         if (getArguments() != null) {
             mParam1 = getArguments().getString( ARG_PARAM1 );
             mParam2 = getArguments().getString( ARG_PARAM2 );
+
         }
     }
 
@@ -86,7 +87,7 @@ public class Login extends Fragment implements View.OnClickListener {
         btnLogin = (Button) getActivity().findViewById( R.id.btnIngresar );
         usrText = (EditText)  getActivity().findViewById( R.id.userText);
         passwordText = (EditText) getActivity().findViewById( R.id.passText ) ;
-
+        buttonRegister = (Button) getActivity().findViewById(R.id.btnRegistar);
         btnLogin.setOnClickListener( this );
         db = new HotelDBHelper( getContext() );
     }
